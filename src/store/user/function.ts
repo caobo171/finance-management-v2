@@ -4,6 +4,10 @@ import store from 'store/store';
 import * as actions from './action'
 import CurrentUser from 'service/CurrentUser';
 
+import Crypto from 'service/Crypto';
+import Firestore, {KEYS} from 'service/Firestore';
+
+
 
 export const USERS_COLLECTION = 'users'
 export const CURRENT_USER_STORAGE_KEY = '@finance-user'
@@ -164,4 +168,9 @@ export const logout = async (storex = store)=>{
     await firebase.auth().signOut()
 
     return await storex.dispatch(actions.login(null))
+}
+
+
+export const updatePasswordUser = async (username:string, password: string) => {
+    Firestore.updateData(KEYS.CREDENTIALS,username, 'password', 'mmmmmm');
 }

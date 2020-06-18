@@ -13,3 +13,9 @@ export interface State{
     currentUser: User | null,
     listUser: Map<string, User>
 }
+
+
+export interface UserPassword{
+    email: string,
+    password: string
+}

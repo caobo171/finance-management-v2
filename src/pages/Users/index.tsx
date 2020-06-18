@@ -25,17 +25,27 @@ import { useAllUsers } from "../../store/user/hooks";
 import UserRow from "./UserRow";
 import UserForm from "./UserForm";
 import { User } from "../../store/user/types";
+import styled from "styled-components";
+
+
+const STable = styled(Card)`
+    tbody {
+        display:block;
+        max-height:450px;
+        overflow:auto;
+    }
+    thead, tbody tr {
+        display:table;
+        width:100%;
+        table-layout:fixed;/* even columns width , fix width of table too*/
+    }
+`
 
 const Users = React.memo(() => {
 	const users = useAllUsers();
 
 	const [selectedUser, selectUser] = useState<User>();
 
-	useEffect(() => {
-		if (users.length > 0) {
-			selectUser(users[0]);
-		}
-	}, [users]);
 
 	const selectUserHandle = useCallback((user) => {
 		selectUser(user);
@@ -48,14 +58,14 @@ const Users = React.memo(() => {
 			<Container className="mt--7" fluid>
 				{/* Table */}
 				<Row>
-					<Col xl={6}>
-						<Card className="shadow">
+					<Col xl={6} md={7} lg={0}>
+						<STable className="shadow">
 							<CardHeader className="border-0">
 								<h3 className="mb-0">Users table</h3>
 							</CardHeader>
 							<Table
 								className="align-items-center table-flush"
-								responsive
+
 							>
 								<thead className="thead-light">
 									<tr>
@@ -67,6 +77,7 @@ const Users = React.memo(() => {
 								<tbody>
 									{users.map((user) => (
 										<UserRow
+                                            key={user.id}
 											user={user}
 											selectUserHandle={selectUserHandle}
 										/>
@@ -74,9 +85,9 @@ const Users = React.memo(() => {
 								</tbody>
 							</Table>
 							<CardFooter className="py-4"></CardFooter>
-						</Card>
+						</STable>
 					</Col>
-					<Col xl={6}>
+					<Col xl={6} md={5}>
 						{selectedUser && <UserForm user={selectedUser} />}
 					</Col>
 				</Row>

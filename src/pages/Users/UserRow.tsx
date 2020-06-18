@@ -1,35 +1,32 @@
 import React, { useCallback } from "react";
-import {
-	Badge,
-	Card,
-	CardHeader,
-	CardFooter,
-	DropdownMenu,
-	DropdownItem,
-	UncontrolledDropdown,
-	DropdownToggle,
-	Media,
-	Pagination,
-	PaginationItem,
-	PaginationLink,
-	Progress,
-	Table,
-	Container,
-	Row,
-	UncontrolledTooltip,
-} from "reactstrap";
 import { User } from "../../store/user/types";
+import styled from "styled-components/macro";
+
+
+const StyledButton = styled.div`
+    padding: 12px;
+    display: inline;
+    
+    font-size: 16px;
+
+    &:hover {
+        cursor: pointer;
+    }
+`
 
 interface Props {
-    user: User;
-    selectUserHandle: (user:User) => void;
+	user: User;
+	selectUserHandle: (user: User) => void;
 }
-const UserRow = React.memo(({ user , selectUserHandle}: Props) => {
-
-    const selectUser = useCallback((e)=>{
-        e.preventDefault();
-        selectUserHandle(user);
-    },[user])
+const UserRow = React.memo(({ user, selectUserHandle }: Props) => {
+	const selectUser = useCallback(
+		(e) => {
+			
+            selectUserHandle(user);
+            e.preventDefault();
+		},
+		[user]
+	);
 	return (
 		<tr>
 			<td>{user.displayName}</td>
@@ -49,10 +46,13 @@ const UserRow = React.memo(({ user , selectUserHandle}: Props) => {
 				</a>
 			</td>
 			<td className="text-right">
-				
-                <i className={'fa fa-hand-pointer-o'}/>
-                <i className={'fa fa-trash'}/>
-                {/* <i className={'fa fa-trash'}/> */}
+				<StyledButton onClick={selectUser}>
+					<i className="fa fa-edit text-blue" />
+				</StyledButton>
+
+				<StyledButton>
+					<i className={"fa fa-trash text-red"} />
+				</StyledButton>
 			</td>
 		</tr>
 	);

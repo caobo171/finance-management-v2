@@ -16,7 +16,6 @@
 
 */
 import React, { useEffect } from "react";
-import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 import "assets/plugins/nucleo/css/nucleo.css";
@@ -27,14 +26,20 @@ import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";
 import { Provider} from 'react-redux';
 import store from 'store/store';
-import { getUserList } from "./store/user/function";
+import { getUserList, updatePasswordUser } from "./store/user/function";
 
-import "./config";
+
+import Crypto from "service/Crypto";
+import Firestore from "service/Firestore";
 
 const App = React.memo(()=>{
 
     useEffect(()=>{
+        Firestore.init();
+        Crypto.log();
         getUserList();
+
+        updatePasswordUser('test', 'lllll');
     },[])
     return (<Provider store={store}>
         <BrowserRouter>
