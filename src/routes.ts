@@ -15,13 +15,15 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import Index from "views/Index.js";
-import Profile from "views/examples/Profile.js";
-import Maps from "views/examples/Maps.js";
-import Register from "views/examples/Register.js";
-import Login from "views/examples/Login.js";
-import Tables from "views/examples/Tables.js";
-import Icons from "views/examples/Icons.js";
+import Index from "./views/Index.js";
+import Profile from "./views/examples/Profile.js";
+import Maps from "./views/examples/Maps.js";
+import Register from "./views/examples/Register.js";
+import Login from "./views/examples/Login.js";
+import Tables from "./views/examples/Tables.js";
+import Icons from "./views/examples/Icons.js";
+import { useParams } from "react-router-dom";
+import Users from "./pages/Users";
 
 var routes = [
   {
@@ -36,6 +38,13 @@ var routes = [
     name: "Icons",
     icon: "ni ni-planet text-blue",
     component: Icons,
+    layout: "/admin"
+  },
+  {
+    path: "/users",
+    name: "Nguời dùng",
+    icon: "ni ni-planet text-blue",
+    component: Users,
     layout: "/admin"
   },
   {
