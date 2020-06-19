@@ -2,17 +2,17 @@ import { combineReducers } from 'redux'
 
 import UserReducer from 'store/user/reducer'
 
-import ItemReducer from 'store/item/reducer'
+import {itemReducer} from 'store/item/slice';
 
 import HomestayReducer  from 'store/homestay/reducer'
 import AcitivityReducer from 'store/activity/reducer'
 
-const AppReducer = combineReducers({
+const rootReducer = combineReducers({
     user: UserReducer,
-    item: ItemReducer,
+    item: itemReducer,
     activity: AcitivityReducer,
     homestay: HomestayReducer
 })
 
 
-export default AppReducer
+export default rootReducer

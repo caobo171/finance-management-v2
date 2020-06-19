@@ -31,15 +31,12 @@ import { getUserList, updatePasswordUser } from "./store/user/function";
 
 import Crypto from "service/Crypto";
 import Firestore from "service/Firestore";
+import Core from "service/Core";
 
 const App = React.memo(()=>{
-
     useEffect(()=>{
-        Firestore.init();
-        Crypto.log();
-        getUserList();
 
-        updatePasswordUser('test', 'lllll');
+        Core.init();
     },[])
     return (<Provider store={store}>
         <BrowserRouter>

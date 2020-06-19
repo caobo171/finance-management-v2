@@ -29,7 +29,9 @@ interface Props {
 const UserForm = React.memo(({ user }: Props) => {
     
     
-    const [password, setPassword] = useState() 
+    const [password, setPassword] = useState();
+    
+    
 
 	return (
 		<Card className="shadow">
@@ -80,7 +82,7 @@ const UserForm = React.memo(({ user }: Props) => {
 									className="form-control-label"
 									htmlFor="input-email"
 								>
-									password
+									Password
 								</label>
 								<Input
 									className="form-control-alternative"

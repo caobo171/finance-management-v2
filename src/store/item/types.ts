@@ -26,6 +26,6 @@ export default interface Item {
 
 
 export interface State {
-    listItems: Map<string,Item>
+    listItems: Record<string,Item>
 }
 
