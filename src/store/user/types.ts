@@ -1,5 +1,5 @@
 export interface User {
-    displayName: string | null,
+    displayName: string,
     id: string,
     photoURL: string ,
     email: string | null ,
@@ -10,8 +10,8 @@ export interface User {
 
 
 export interface State{
-    currentUser: User | null,
-    listUser: Map<string, User>
+    current: User | null,
+    byId: Record<string, User>
 }
 
 

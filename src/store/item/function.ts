@@ -1,8 +1,8 @@
 import firebase  from 'firebase'
 import Item, { ItemType } from './types'
 import store from 'store/store'
-import * as actions from './actions'
 import { Activity } from 'store/activity/types'
+import { itemAction } from './slice'
 
 
 export const ITEM_COLLECTION = 'items'
@@ -40,6 +40,6 @@ export const updateAmountOfItem = async (item: Item )=>{
     })
 }
 
-export const updateItems = async(items: Map<string, Item>, storex= store)=>{
-    return storex.dispatch(actions.getItems(items))
+export const updateItems = async(items: Record<string, Item>, storex= store)=>{
+    return storex.dispatch(itemAction.bulkAdd(items))
 }

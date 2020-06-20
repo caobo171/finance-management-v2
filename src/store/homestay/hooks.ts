@@ -1,17 +1,13 @@
 import {useSelector } from 'react-redux'
-import store from 'store/store'
-import Item, { State } from './types'
 import { FAKE_HOMESTAY } from './function'
+import { RootState } from 'store/types'
 
 export const useHomeStays = ()=>{
-     return useSelector((state: {
-         homestay: State
-     })=> [...state.homestay.listHomeStay.values()])
+     return useSelector((state: RootState)=> Object.values(state.homestay.byId))
 }
 
 
 export const useHomeStay = (homestayId: string)=>{
-    return useSelector((state: {
-        homestay: State
-    })=> (state.homestay.listHomeStay.get(homestayId) || homestayId ))
+    return useSelector((state: RootState)=> 
+    (state.homestay.byId[homestayId] || FAKE_HOMESTAY))
 }

@@ -1,8 +1,8 @@
 import firebase from "firebase";
 import HomeStay, { FAKE_IMAGE_HOMESTAY } from "./types";
 import store from "store/store";
-import * as actions from "./actions";
 import Firestore, { KEYS } from "service/Firestore";
+import { homestayAction } from "./slice";
 
 export const DEFAULT_ITEM_IMAGE =
 	"https://primerize.stanford.edu/site_media/images/fg_question.png";
@@ -26,15 +26,10 @@ export const getAllHomeStays = async (storex = store) => {
 		collection: KEYS.HOMESTAY,
     });
 
-    let homeStay: 
-    homeStays.fo
+    let homeStayObject: Record<string,HomeStay> = {}
+    homeStays.forEach(homestay=>{
+        homeStayObject[homestay.id] = homestay;
+    })
     
-    return storex.dispatch(actions.getHomeStays(homeStays));
-};
-
-export const updateHomeStays = async (
-	homestays: Map<string, HomeStay>,
-	storex = store
-) => {
-	return storex.dispatch(actions.getHomeStays(homestays));
+    return storex.dispatch(homestayAction.bulkAdd(homeStayObject));
 };

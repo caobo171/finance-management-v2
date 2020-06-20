@@ -1,13 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import store from "./store";
-import { useSelector } from "react-redux";
+import { createSlice, PayloadAction , SliceCaseReducers} from "@reduxjs/toolkit";
+
 type GenericType<T> = T & {id: string};
 
 type Model<T> = {
 	byId: Record<string, T>;
 };
 
-const createSliceModel = <T>(name: string, initialState: Model<T>) => {
+const createSliceModel = <T>(name: string, initialState: Model<T>, object?: SliceCaseReducers<typeof initialState>) => {
 	const slice =  createSlice({
 		name,
 		initialState,
@@ -44,8 +43,10 @@ const createSliceModel = <T>(name: string, initialState: Model<T>) => {
                     ...state,
                     byId: remain as Model<T>['byId']
                 }
-            }
-
+            },
+            
+            ...object
+            
 		},
     });
     

@@ -1,17 +1,16 @@
 import { combineReducers } from 'redux'
 
-import UserReducer from 'store/user/reducer'
 
+import {userReducer} from 'store/user/slice';
 import {itemReducer} from 'store/item/slice';
-
-import HomestayReducer  from 'store/homestay/reducer'
+import {homestayReducer} from 'store/homestay/slice';
 import AcitivityReducer from 'store/activity/reducer'
 
 const rootReducer = combineReducers({
-    user: UserReducer,
+    user: userReducer,
     item: itemReducer,
     activity: AcitivityReducer,
-    homestay: HomestayReducer
+    homestay: homestayReducer
 })
 
 

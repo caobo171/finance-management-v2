@@ -1,14 +1,14 @@
-import  * as firebase from 'firebase'
+// import  * as firebase from 'firebase'
 
-import {ITEM_COLLECTION} from 'store/item/function'
-import { ACTIVITY_COLLECTION } from 'store/activity/functions'
-import Item from 'store/item/types'
-import { updateItems } from 'store/item/function'
-import { updateActivities } from 'store/activity/functions'
-import { Activity } from 'store/activity/types'
-import { updateHomeStays } from 'store/homestay/function'
-import HomeStay from 'store/homestay/types'
-import { KEYS } from './Firestore'
+// import {ITEM_COLLECTION} from 'store/item/function'
+// import { ACTIVITY_COLLECTION } from 'store/activity/functions'
+// import Item from 'store/item/types'
+// import { updateItems } from 'store/item/function'
+// import { updateActivities } from 'store/activity/functions'
+// import { Activity } from 'store/activity/types'
+// import { updateHomeStays } from 'store/homestay/function'
+// import HomeStay from 'store/homestay/types'
+// import { KEYS } from './Firestore'
 
 class RealTimeSystem {
     async init (){
